@@ -1,36 +1,47 @@
 {
-  "name": "loose-envify",
-  "version": "1.4.0",
-  "description": "Fast (and loose) selective `process.env` replacer using js-tokens instead of an AST",
+  "name": "react",
+  "description": "React is a JavaScript library for building user interfaces.",
   "keywords": [
-    "environment",
-    "variables",
-    "browserify",
-    "browserify-transform",
-    "transform",
-    "source",
-    "configuration"
+    "react"
   ],
-  "homepage": "https://github.com/zertosh/loose-envify",
+  "version": "18.1.0",
+  "homepage": "https://reactjs.org/",
+  "bugs": "https://github.com/facebook/react/issues",
   "license": "MIT",
-  "author": "Andres Suarez <zertosh@gmail.com>",
+  "files": [
+    "LICENSE",
+    "README.md",
+    "index.js",
+    "cjs/",
+    "umd/",
+    "jsx-runtime.js",
+    "jsx-dev-runtime.js",
+    "react.shared-subset.js"
+  ],
   "main": "index.js",
-  "bin": {
-    "loose-envify": "cli.js"
+  "exports": {
+    ".": {
+      "react-server": "./react.shared-subset.js",
+      "default": "./index.js"
+    },
+    "./package.json": "./package.json",
+    "./jsx-runtime": "./jsx-runtime.js",
+    "./jsx-dev-runtime": "./jsx-dev-runtime.js"
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/zertosh/loose-envify.git"
+    "url": "https://github.com/facebook/react.git",
+    "directory": "packages/react"
   },
-  "scripts": {
-    "test": "tap test/*.js"
+  "engines": {
+    "node": ">=0.10.0"
   },
   "dependencies": {
-    "js-tokens": "^3.0.0 || ^4.0.0"
+    "loose-envify": "^1.1.0"
   },
-  "devDependencies": {
-    "browserify": "^13.1.1",
-    "envify": "^3.4.0",
-    "tap": "^8.0.0"
+  "browserify": {
+    "transform": [
+      "loose-envify"
+    ]
   }
 }

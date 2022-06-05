@@ -1,45 +1,37 @@
-# loose-envify
+# `react`
 
-[![Build Status](https://travis-ci.org/zertosh/loose-envify.svg?branch=master)](https://travis-ci.org/zertosh/loose-envify)
+React is a JavaScript library for creating user interfaces.
 
-Fast (and loose) selective `process.env` replacer using [js-tokens](https://github.com/lydell/js-tokens) instead of an AST. Works just like [envify](https://github.com/hughsk/envify) but much faster.
+The `react` package contains only the functionality necessary to define React components. It is typically used together with a React renderer like `react-dom` for the web, or `react-native` for the native environments.
 
-## Gotchas
+**Note:** by default, React will be in development mode. The development version includes extra warnings about common mistakes, whereas the production version includes extra performance optimizations and strips all error messages. Don't forget to use the [production build](https://reactjs.org/docs/optimizing-performance.html#use-the-production-build) when deploying your application.
 
-* Doesn't handle broken syntax.
-* Doesn't look inside embedded expressions in template strings.
-  - **this won't work:**
-  ```js
-  console.log(`the current env is ${process.env.NODE_ENV}`);
-  ```
-* Doesn't replace oddly-spaced or oddly-commented expressions.
-  - **this won't work:**
-  ```js
-  console.log(process./*won't*/env./*work*/NODE_ENV);
-  ```
+## Usage
 
-## Usage/Options
+```js
+import { useState } from 'react';
+import { createRoot } from 'react-dom/client';
 
-loose-envify has the exact same interface as [envify](https://github.com/hughsk/envify), including the CLI.
+function Counter() {
+  const [count, setCount] = useState(0);
+  return (
+    <>
+      <h1>{count}</h1>
+      <button onClick={() => setCount(count + 1)}>
+        Increment
+      </button>
+    </>
+  );
+}
 
-## Benchmark
-
+const root = createRoot(document.getElementById('root'));
+root.render(<App />);
 ```
-envify:
 
-  $ for i in {1..5}; do node bench/bench.js 'envify'; done
-  708ms
-  727ms
-  791ms
-  719ms
-  720ms
+## Documentation
 
-loose-envify:
+See https://reactjs.org/
 
-  $ for i in {1..5}; do node bench/bench.js '../'; done
-  51ms
-  52ms
-  52ms
-  52ms
-  52ms
-```
+## API
+
+See https://reactjs.org/docs/react-api.html
